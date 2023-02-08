@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+  <head>
+    <meta charset="UTF-8">
+ 
+    <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+   <link
+   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+   rel="stylesheet"
+ />
+
+ <link
+   href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+   rel="stylesheet"
+ />
+
+ <link
+   href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css"
+   rel="stylesheet"
+ />
+   </head>
+   <title> Login page</title>
+   <style>
+
+html,body{
+  display: grid;
+  height: 100vh;
+  place-items:center;
+  /* background: #be2edd; */
+}
+.main_div{
+  width: 365px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+}
+.main_div .title{
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+}
+.main_div .social_icons{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  margin-top: 25px;
+}
+form .input_box{
+  height: 50px;
+  width: 100%;
+  position: relative;
+  margin-top: 15px;
+}
+.input_box input{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding-left: 45px;
+  font-size: 17px;
+  transition: all 0.3s ease;
+}
+.input_box input:focus{
+  border-color: #be2edd;
+}
+.input_box .icon{
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  color: grey;
+}
+form .option_div{
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.option_div .check_box{
+  display: flex;
+  align-items: center;
+}
+.option_div span{
+  margin-left: 5px;
+  font-size: 16px;
+  color: #333;
+}
+.option_div .forget_div a{
+  font-size: 16px;
+  color: #be2edd;
+}
+.button input{
+  padding-left: 0;
+  background: #be2edd;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.button input:hover{
+  background: #a720c5;
+}
+form .sign_up{
+  text-align: center;
+  margin-top: 25px;
+}
+.sign_up a{
+  color: #be2edd;
+}
+form a{
+  text-decoration: none;
+}
+form a:hover{
+  text-decoration: underline;
+}
+/* for capcha */
+body{
+      background-color: rgb(7, 112, 209);
+    font-family: sans-serif;
+    } 
+    .capt{
+  background-color:#ffffff;
+  width: 300px;
+ 
+  border-radius: 5px red solid;
+  position: absolute;
+    transform: translate(-50%,-50%);
+    /* top: 30%; */
+    left: 50%;
+    margin-top: -1%;
+}
+
+#mainCaptcha{
+  position: relative;
+    max-width: 300px;
+
+  margin: 10px;
+  padding: 25px;
+  user-select: none;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0,139,253,0.25);
+  font-size: 20px;
+  
+}
+
+#refresh{
+  position:relative;
+  left:240px;
+  width:20px;
+  height:30px;
+  bottom:57px;
+  background-color: transparent;
+  outline: none;
+  background-image: url('https://img.icons8.com/android/24/000000/refresh.png');
+  border : 0;
+  background-repeat: no-repeat;
+}
+
+#txtInput, #Button1{
+  position: relative;
+  left:17px;
+  padding: 10px 10px;
+  bottom: 40px;
+  font-size: 15px;
+  /* height: 1%; */
+}
+#txtInput{
+  border: 2px solid rgb(4, 82, 160);
+}
+#Button1{
+  background-color: rgb(7, 59, 115);
+  border-color: rgb(7, 59, 115);
+  color: #fff;
+   
+}
+   </style>
+   <script>
+    function process(element){
+	    var form = element.closest('form')
+		// alert(JSON.stringify(form))
+	    // now you can extract the input field of this specific form.
+	}
+	function Captcha(){
+		var btnSubmit = document.getElementById("login1");
+        btnSubmit.disabled = true;
+        btnSubmit.style.backgroundColor="gray";
+   
+     	var alpha = new Array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+							  'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z', 
+        					  '0','1','2','3','4','5','6','7','8','9');
+     	var i;
+     	for(i = 0 ; i < 6 ; i ++)
+     	{
+			var a = alpha[Math.floor(Math.random() * alpha.length)];
+         	var b = alpha[Math.floor(Math.random() * alpha.length)];
+			var c = alpha[Math.floor(Math.random() * alpha.length)];
+		 	var d = alpha[Math.floor(Math.random() * alpha.length)];
+		 	var e = alpha[Math.floor(Math.random() * alpha.length)];
+		 	var f = alpha[Math.floor(Math.random() * alpha.length)];
+		 	var g = alpha[Math.floor(Math.random() * alpha.length)];
+        }
+        var code = a + ' ' + b + ' ' + ' ' + c + ' ' + d + ' ' + e + ' '+ f + ' ' + g;
+        document.getElementById("mainCaptcha").innerHTML = code
+     	document.getElementById("mainCaptcha").value = code
+	}
+	
+	function ValidateCaptcha(){
+		var string1 = removeSpaces(document.getElementById('mainCaptcha').value);
+	    var string2 = removeSpaces(document.getElementById('txtInput').value);
+	     
+	    var btnSubmit = document.getElementById("login1");
+	    btnSubmit.disabled = true;
+	    if (string1 == string2){
+	    	btnSubmit.disabled = false;
+	     	btnSubmit.style.backgroundColor="green";
+	        return true;
+	    }
+	}
+	
+	function removeSpaces(string){
+	     return string.split(' ').join('');
+	}
+
+   </script>
+<body style=" color:#0d6efd; font-family: Georgia, serif; background-image: url('https://www.freightcourse.com/wp-content/uploads/2021/04/received-for-shipment.jpg'); background-repeat:no-repeat;  background-size: 100% 100%" >
+  <div class="main_div">
+  
+    <div class="title">Login</div>
+	<p style="text-transform: capitalize;color:red" th:text="${message}"></p>
+    <form  id="loginform"  action="/login"  method="POST" >
+      <div class="input_box">
+        <input type="text" placeholder="Email" name="username" required>
+        <div class="icon"><i class="fas fa-user"></i></div>
+      </div>
+      <div class="input_box">
+        <input type="password" placeholder="Password" name="password" required>
+        <div class="icon"><i class="fas fa-lock"></i></div>
+      </div>
+  
+      <div class="option_div">
+        <div class="check_box">
+          <input type="checkbox" required="required">
+          <span>Remember me</span>
+        </div>
+        <div class="forget_div">
+          <a  th:href="@{/forgotpassword}">Forgot password?</a>
+        </div>
+   
+      </div>
+      
+      <br><br><br><br><br> <body onload="Captcha();" required="required"> 
+        <div class="capt"> 
+          <!-- <h1>capcha</h1> -->
+        <h2 type="text" id="mainCaptcha"></h2>
+        <p><input type="button" id="refresh" onclick="Captcha();"/></p>           
+         <input type="text" id="txtInput"/>    
+        <input id="Button1" type="button" value="Check" onclick="ValidateCaptcha();"/> 
+        </div>
+     </body><br><br><br>
+     
+      <div class="input_box button">
+        <input type="submit" id="login1" value="Login">
+      </div>
+      
+      <div class="sign_up">
+        Not a member? <a  href="/" th:href="@{/register}">Signup now</a>
+      </div>
+    </form>
+  </div>
+  
+</body>
+</html>

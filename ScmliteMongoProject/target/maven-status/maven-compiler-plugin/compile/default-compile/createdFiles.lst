@@ -1,0 +1,16 @@
+com\example\demo\service\CustomAuthenticationProvider.class
+com\example\demo\service\ShipmentService.class
+com\example\demo\service\UserService.class
+com\example\demo\Repository\StreamRepository.class
+com\example\demo\ScmliteMongoProjectApplication.class
+com\example\demo\model\Shipment.class
+com\example\demo\Repository\ShipmentRepository.class
+com\example\demo\restcontroller\SignupController.class
+com\example\demo\Repository\SignupRepository.class
+com\example\demo\model\Stream.class
+com\example\demo\config\WebSecurityConfig.class
+com\example\demo\service\CustomUserDetailsService.class
+com\example\demo\controller\StreamController.class
+com\example\demo\restcontroller\ShipmentController.class
+com\example\demo\controller\ViewController.class
+com\example\demo\model\Signup.class
